@@ -145,18 +145,23 @@ def get_plan_directory(plan_title: str, base_path: str | Path | None = None) -> 
     return plan_dir
 
 
-def save_raw_output(
+def save_compressed_artifact(
     plan_title: str,
     step_id: str,
     step_title: str,
     tool_name: str,
     raw_output: str,
+    compression_result: dict[str, Any] | None = None,
     base_path: str | Path | None = None,
 ) -> str:
     """
-    Save the raw tool output to disk.
+    Save a compressed artifact file containing both metadata and raw output.
 
-    This always runs, even if is_useful == false.
+    The file contains:
+    - Metadata: summary_title, summary, extraction, is_useful, plan context
+    - Raw output: The complete raw tool output
+
+    This always runs, even if is_useful == false or compression fails.
 
     Args:
         plan_title: Title of the research plan
@@ -164,35 +169,53 @@ def save_raw_output(
         step_title: Title of the current step
         tool_name: Name of the tool that was called
         raw_output: Raw output from the tool
+        compression_result: Optional compression metadata dict
         base_path: Optional base path override
 
     Returns:
-        Relative path to the saved file (for injection into conversation)
+        Relative path to the saved artifact file
     """
     plan_dir = get_plan_directory(plan_title, base_path)
 
-    # Try to parse as JSON for pretty printing, otherwise save as text
+    # Check if raw output is valid JSON
     try:
-        parsed = json.loads(raw_output)
-        content = json.dumps(parsed, indent=2, ensure_ascii=False)
-        extension = "json"
+        raw_parsed = json.loads(raw_output)
+        raw_data = json.dumps(raw_parsed, indent=2, ensure_ascii=False)
     except (json.JSONDecodeError, TypeError):
-        content = raw_output
-        extension = "txt"
+        raw_data = raw_output
 
-    filename = generate_artifact_filename(
-        plan_title=plan_title,
-        step_id=step_id,
-        step_title=step_title,
-        tool_name=tool_name,
-        extension=extension,
-    )
+    # Build the complete artifact with metadata and raw output
+    artifact = {
+        "_metadata": {
+            "summary_title": compression_result.get("summary_title", "") if compression_result else "",
+            "summary": compression_result.get("summary", "") if compression_result else "",
+            "extraction": compression_result.get("extraction", []) if compression_result else [],
+            "is_useful": compression_result.get("is_useful", True) if compression_result else True,
+            "plan_title": plan_title,
+            "step_id": step_id,
+            "step_title": step_title,
+            "tool_name": tool_name,
+        },
+        "raw_output": raw_data,
+    }
+
+    # Generate self-explanatory filename with "compressed" indicator
+    sanitized_plan = sanitize_filename_component(plan_title)[:30]
+    sanitized_step_title = sanitize_filename_component(step_title)[:30]
+    sanitized_tool_name = sanitize_filename_component(tool_name)[:20]
+
+    filename = f"{sanitized_plan}__s{step_id}_{sanitized_step_title}__{sanitized_tool_name}.compressed.json"
+
+    # Fallback truncation if too long
+    if len(filename) > 100:
+        sanitized_step_title = sanitize_filename_component(step_title)[:20]
+        filename = f"{sanitized_plan}__s{step_id}_{sanitized_step_title}__{sanitized_tool_name}.compressed.json"
 
     file_path = plan_dir / filename
 
-    # Write the raw output
+    # Write the complete artifact
     with open(file_path, "w", encoding="utf-8") as f:
-        f.write(content)
+        json.dump(artifact, f, indent=2, ensure_ascii=False)
 
     # Return relative path from base_path parent
     base = get_artifact_base_path() if base_path is None else Path(base_path)
@@ -263,9 +286,11 @@ async def compress_tool_result(
     base_path: str | Path | None = None,
 ) -> dict[str, Any] | None:
     """
-    Compress a tool result using an LLM and save the raw output to disk.
+    Compress a tool result using an LLM and save to disk with metadata.
 
     This is the main entry point for the compression pipeline.
+    The output file contains both metadata and raw output in a single
+    self-explanatory artifact file with a .compressed.json extension.
 
     Args:
         llm: The LLM to use for compression (should be a fast, cost-effective model)
@@ -285,18 +310,8 @@ async def compress_tool_result(
         json.JSONDecodeError: If the LLM returns invalid JSON
         ValueError: If the compression result fails validation
     """
-    # Step 1: Save raw output to disk (always runs, even if compression fails)
-    artifact_file = save_raw_output(
-        plan_title=plan_title,
-        step_id=step_id,
-        step_title=step_title,
-        tool_name=tool_name,
-        raw_output=raw_output,
-        base_path=base_path,
-    )
-    logger.info(f"Saved raw tool output to: {artifact_file}")
-
-    # Step 2: Invoke LLM for compression
+    # Step 1: Invoke LLM for compression
+    compression_result: dict[str, Any] | None = None
     try:
         compression_result = await _invoke_compression_llm(
             llm=llm,
@@ -309,23 +324,23 @@ async def compress_tool_result(
         )
     except Exception as e:
         logger.error(f"Compression LLM invocation failed: {e}")
-        # On compression failure, we still saved the raw output
-        # Return None to skip injection but preserve the artifact
-        return None
+        # On compression failure, still save raw output but without compression metadata
 
-    # Step 3: Save compression metadata
-    save_compression_metadata(
+    # Step 2: Save compressed artifact with both metadata and raw output
+    # This always runs, even if compression failed or is_useful == false
+    artifact_file = save_compressed_artifact(
         plan_title=plan_title,
         step_id=step_id,
         step_title=step_title,
         tool_name=tool_name,
+        raw_output=raw_output,
         compression_result=compression_result,
-        artifact_file=artifact_file,
         base_path=base_path,
     )
+    logger.info(f"Saved compressed artifact to: {artifact_file}")
 
-    # Step 4: Return metadata for injection only if useful
-    if compression_result.get("is_useful", True):
+    # Step 3: Return metadata for injection only if useful
+    if compression_result and compression_result.get("is_useful", True):
         return {
             "summary_title": compression_result.get("summary_title", ""),
             "summary": compression_result.get("summary", ""),
@@ -333,7 +348,7 @@ async def compress_tool_result(
             "artifact_file": artifact_file,
         }
     else:
-        logger.info("Tool result marked as not useful, skipping conversation injection")
+        logger.info("Tool result marked as not useful (or compression failed), skipping conversation injection")
         return None
 
 

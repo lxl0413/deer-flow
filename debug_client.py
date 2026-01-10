@@ -20,11 +20,11 @@ request_data = {
         }
     ],
     "auto_accepted_plan": True,  # Auto-accept the plan
-    "enable_background_investigation": True,
-    "enable_web_search": True,
-    "max_plan_iterations": 1,
-    "max_step_num": 3,
-    "max_search_results": 3,
+    "enable_background_investigation": False,
+    "enable_web_search": False,
+    "max_plan_iterations": 3,
+    "max_step_num": 4,
+    "max_search_results": 2,
 }
 
 
