@@ -1,0 +1,13 @@
+{
+  "_metadata": {
+    "summary_title": "No relevant info on target dish",
+    "summary": "Tool output lacks data on tomato scrambled eggs' variations, origin, or cultural significance.",
+    "extraction": [],
+    "is_useful": false,
+    "plan_title": "Comprehensive Tomato Scrambled Eggs Research Plan",
+    "step_id": "0",
+    "step_title": "Research Recipe Variations & Historical Context",
+    "tool_name": "web_search"
+  },
+  "raw_output": "snippet: A golden age in Chinese history , the Han dynasty 's long period of stability and prosperity consolidated the foundation of China as a unified state under a central imperial bureaucracy, which was to last intermittently for most of the next two millennia., title: History of China - Wikipedia, link: https://en.wikipedia.org/wiki/History_of_China, snippet: Dec 14, 2019 · tomato [英] [təˈmɑ:təu] [美] [təˈmeto] n. 番茄，西红柿； [俚语] 美女 复数: tomatoes 双语例句 1. a bacon, lettuce and tomato sandwich 咸肉、生菜加番茄三明治 2. The tomato hit …, title: tomato怎么读？ - 百度知道, link: https://zhidao.baidu.com/question/2010108625606689468.html"
+}

@@ -200,16 +200,16 @@ def save_compressed_artifact(
     }
 
     # Generate self-explanatory filename with "compressed" indicator
-    sanitized_plan = sanitize_filename_component(plan_title)[:30]
-    sanitized_step_title = sanitize_filename_component(step_title)[:30]
-    sanitized_tool_name = sanitize_filename_component(tool_name)[:20]
+    if not compression_result or not compression_result.get("summary_title", ""):
+        filename = f"{sanitize_filename_component(step_title)}_{tool_name}.compressed.json"
+    else:
+        filename = f"{sanitize_filename_component(compression_result.get("summary_title", ""))}.compressed.json"
 
-    filename = f"{sanitized_plan}__s{step_id}_{sanitized_step_title}__{sanitized_tool_name}.compressed.json"
-
-    # Fallback truncation if too long
-    if len(filename) > 100:
-        sanitized_step_title = sanitize_filename_component(step_title)[:20]
-        filename = f"{sanitized_plan}__s{step_id}_{sanitized_step_title}__{sanitized_tool_name}.compressed.json"
+    # # Fallback truncation if too long
+    # if len(filename) > 100:
+    #     sanitized_step_title = sanitize_filename_component(step_title)[:20]
+    #     filename = f"{sanitized_plan}__s{step_id}_{sanitized_step_title}__{sanitized_tool_name}.compressed.json"
+    #
 
     file_path = plan_dir / filename
 

@@ -1,0 +1,18 @@
+{
+  "_metadata": {
+    "summary_title": "Stir frying origin details for tomato egg dish",
+    "summary": "Stir frying originated in Han dynasty China (initially grain drying), spread to Asia/West recently; similar to Western sautéing.",
+    "extraction": [
+      "Stir frying origin: Han dynasty (206 BC-220 AD)",
+      "Initial stir frying use: drying grain",
+      "Stir frying spread: Asia/West recent centuries",
+      "Stir frying: similar to Western sautéing"
+    ],
+    "is_useful": true,
+    "plan_title": "Comprehensive Tomato Scrambled Eggs Research Plan",
+    "step_id": "0",
+    "step_title": "Research Recipe Variations & Historical Context",
+    "tool_name": "web_search"
+  },
+  "raw_output": "snippet: The technique originated in China and in recent centuries has spread into other parts of Asia and the West. It is similar to sautéing in Western cooking technique. Wok frying may have been used as early as the Han dynasty (206 BC – 220 AD), although initially for drying grain, not for cooking., title: Stir frying - Wikipedia, link: https://en.wikipedia.org/wiki/Stir_frying, snippet: < Back. Main Dish. Chinese Tomato and Egg Stir Fry . Cooking Time: 40m. Stir well to combine. Return the scrambled eggs to the pan and gently fold them into the tomato mixture. Cook for another minute or until everything is heated through., title: Chinese Tomato and Egg Stir Fry | Language Cafe, link: https://www.languagecafe.world/cookbook/chinese-tomato-and-egg-stir-fry"
+}

@@ -1,0 +1,13 @@
+{
+  "_metadata": {
+    "summary_title": "General egg history irrelevant to dish",
+    "summary": "Tool output covers general egg history but no info on tomato scrambled eggs.",
+    "extraction": [],
+    "is_useful": false,
+    "plan_title": "Comprehensive Tomato Scrambled Eggs Research Plan",
+    "step_id": "0",
+    "step_title": "Research Recipe Variations & Historical Context",
+    "tool_name": "web_search"
+  },
+  "raw_output": "snippet: Bird eggs have been valuable foodstuffs since prehistory , in both hunting societies and more recent cultures where birds were domesticated., title: Eggs as food - Wikipedia, link: https://en.wikipedia.org/wiki/Eggs_as_food, snippet: Bird eggs have been valuable foodstuffs since prehistory , in both hunting societies and more recent cultures where birds were domesticated., title: Egg as food | Ultimate Pop Culture Wiki | Fandom, link: https://ultimatepopculture.fandom.com/wiki/Egg_as_food"
+}

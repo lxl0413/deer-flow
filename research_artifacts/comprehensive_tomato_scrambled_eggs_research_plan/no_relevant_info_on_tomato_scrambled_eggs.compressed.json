@@ -1,0 +1,13 @@
+{
+  "_metadata": {
+    "summary_title": "No relevant info on tomato scrambled eggs",
+    "summary": "Tool output lacks data on tomato scrambled eggs recipe variations, history, or cultural significance.",
+    "extraction": [],
+    "is_useful": false,
+    "plan_title": "Comprehensive Tomato Scrambled Eggs Research Plan",
+    "step_id": "0",
+    "step_title": "Research Recipe Variations & Historical Context",
+    "tool_name": "web_search"
+  },
+  "raw_output": "snippet: Chinese civilization first emerged in the Yellow River valley, which along with the Yangtze basin constitutes the geographic core of the Chinese cultural sphere. China maintains a rich diversity of ethnic and linguistic people groups., title: History of China - Wikipedia, link: https://en.wikipedia.org/wiki/History_of_China, snippet: Thanks for subscribing: https://www.youtube.com/user/jamieoliver?sub_confirmation= 1 Scrambled eggs can be hard to get right so Jamie's done a little video to ..., title: How To Make Perfect Scrambled Eggs - 3 ways - YouTube, link: https://www.youtube.com/watch?v=s9r-CxnCXkg"
+}

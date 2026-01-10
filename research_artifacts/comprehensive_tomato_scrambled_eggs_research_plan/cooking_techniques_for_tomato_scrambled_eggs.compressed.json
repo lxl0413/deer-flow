@@ -1,0 +1,17 @@
+{
+  "_metadata": {
+    "summary_title": "Cooking Techniques for Tomato Scrambled Eggs",
+    "summary": "Authentic tomato scrambled eggs use quick high-heat stir-fry to keep eggs fluffy and tomatoes saucy; steps: set eggs slightly, finish with scallions.",
+    "extraction": [
+      "Quick high-heat stir-fry for authentic prep",
+      "Set egg mixture slightly before stirring",
+      "Finish with scallions for authentic taste"
+    ],
+    "is_useful": true,
+    "plan_title": "Comprehensive Tomato Scrambled Eggs Research Plan",
+    "step_id": "0",
+    "step_title": "Research Recipe Variations & Historical Context",
+    "tool_name": "web_search"
+  },
+  "raw_output": "snippet: The cooking process for stir-fried tomato and scrambled eggs emphasizes quick, high-heat techniques to preserve the eggs ' fluffiness and develop the tomatoes ' natural juices into a light sauce., title: Stir-fried tomato and scrambled eggs, link: https://grokipedia.com/page/Stir-fried_tomato_and_scrambled_eggs, snippet: Got tomatoes and eggs at home ?Pour in the egg mixture, let it set slightly, then gently stir to mix with the tomatoes . 炒至蛋刚熟、柔软滑嫩。 Cook until the eggs are just set and tender. 放葱花 Finish with scallions 撒上葱花，翻匀后关火。, title: Tomato and Scrambled Eggs | Simple & Authentic Chinese Home ..., link: https://www.youtube.com/watch?v=CXV_wSFcE1g"
+}

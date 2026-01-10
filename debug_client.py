@@ -16,12 +16,13 @@ request_data = {
     "messages": [
         {
             "role": "user",
-            "content": "简单介绍下量子计算"
+            "content": "怎么做一道番茄炒蛋"
         }
     ],
     "auto_accepted_plan": True,  # Auto-accept the plan
     "enable_background_investigation": False,
     "enable_web_search": False,
+    "enable_deep_thinking": True,
     "max_plan_iterations": 3,
     "max_step_num": 4,
     "max_search_results": 2,

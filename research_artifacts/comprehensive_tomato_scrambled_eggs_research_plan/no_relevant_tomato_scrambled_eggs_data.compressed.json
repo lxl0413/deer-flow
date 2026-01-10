@@ -1,0 +1,13 @@
+{
+  "_metadata": {
+    "summary_title": "No relevant tomato scrambled eggs data",
+    "summary": "Tool output gives general northern-southern China info but no specifics on tomato scrambled eggs recipe variations or history.",
+    "extraction": [],
+    "is_useful": false,
+    "plan_title": "Comprehensive Tomato Scrambled Eggs Research Plan",
+    "step_id": "0",
+    "step_title": "Research Recipe Variations & Historical Context",
+    "tool_name": "web_search"
+  },
+  "raw_output": "snippet: Northern China and southern China are two approximate regions that display certain differences in terms of their geography, demographics, economy, and culture., title: Northern and southern China - Wikipedia, link: https://en.wikipedia.org/wiki/Northern_and_southern_China, snippet: Northern China food tour takes us through provincial cuisines ranging from Tianjin, to DongBei, to Inner Mongolia & more!Daniel: https://www.instagram.com/th..., title: NORTHERN Chinese vs SOUTHERN Chinese Food! - YouTube, link: https://www.youtube.com/watch?v=WXlZV52Rg6E"
+}

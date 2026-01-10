@@ -1,0 +1,13 @@
+{
+  "_metadata": {
+    "summary_title": "Content Extraction Failed for Recipe Page",
+    "summary": "Crawl tool failed to extract content from Chinese tomato scrambled eggs recipe URL.",
+    "extraction": [],
+    "is_useful": false,
+    "plan_title": "Comprehensive Tomato Scrambled Eggs Research Plan",
+    "step_id": "0",
+    "step_title": "Research Recipe Variations & Historical Context",
+    "tool_name": "crawl_tool"
+  },
+  "raw_output": "{\n  \"url\": \"https://www.chinafoodrecipe.com/recipe/chinese-tomato-scrambled-eggs-recipe-fast-and-flavorful-sweet-and-sour-rice-companion/\",\n  \"crawled_content\": \"# Content Extraction Failed\\n\\nContent extraction failed. Raw content:         Chinese Tomato Scrambled Eggs Recipe...</p>\"\n}"
+}

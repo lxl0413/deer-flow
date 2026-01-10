@@ -1,0 +1,13 @@
+{
+  "_metadata": {
+    "summary_title": "Basic tomato scrambled eggs recipes",
+    "summary": "Tool output has basic recipe steps but no relevant info (variations, history, expert tips, cultural significance) for current step.",
+    "extraction": [],
+    "is_useful": false,
+    "plan_title": "Comprehensive Tomato Scrambled Eggs Research Plan",
+    "step_id": "0",
+    "step_title": "Research Recipe Variations & Historical Context",
+    "tool_name": "web_search"
+  },
+  "raw_output": "snippet: Chinese tomato scrambled eggs are very simple to make. First, scramble the eggs until they become fluffy and set aside. Then, stir-fry the tomatoes until a red broth is formed., title: Chinese Tomato Scrambled Eggs Recipe - Fast... - China Food Recipe, link: https://www.chinafoodrecipe.com/recipe/chinese-tomato-scrambled-eggs-recipe-fast-and-flavorful-sweet-and-sour-rice-companion/, snippet: Tomato Scrambled Eggs . Tomato And Egg Recipes.This Tomato Scrambled Eggs Recipe adds a juicy twist to classic eggs , making mornings delicious and healthy., title: ru.pinterest.com/ideas/ egg - tomato -recipes/926173267176, link: https://ru.pinterest.com/ideas/egg-tomato-recipes/926173267176/"
+}
